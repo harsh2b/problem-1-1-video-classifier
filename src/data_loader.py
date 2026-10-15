@@ -1,8 +1,4 @@
-"""
-Data Loader and Dataset Management for Task 1: Video Classifier.
-Ingests Video-MME 10% sample metadata, manages video downloads from HuggingFace,
-and prepares stratified train/test partitions by video_id to avoid data leakage.
-"""
+"""Loads Video-MME 10% sample and builds train/test splits."""
 import os
 import json
 from pathlib import Path
@@ -33,7 +29,7 @@ class VideoMMELoader:
         if self.metadata_file.exists():
             return pd.read_csv(self.metadata_file)
 
-        print("[DataLoader] Fetching Video-MME 10% sample from Hugging Face...")
+        print("Fetching Video-MME sample from HuggingFace...")
         ds = load_dataset(REPO_ID, split="test")
         df = ds.to_pandas()
 
@@ -49,7 +45,7 @@ class VideoMMELoader:
         )
 
         unique_videos.to_csv(self.metadata_file, index=False)
-        print(f"[DataLoader] Processed {len(unique_videos)} unique videos. Saved to {self.metadata_file}")
+        print(f"Got {len(unique_videos)} unique videos, saved to {self.metadata_file}")
         return unique_videos
 
     def download_video(self, video_id: str) -> Optional[str]:
@@ -71,7 +67,7 @@ class VideoMMELoader:
             )
             return downloaded
         except Exception as e:
-            print(f"[DataLoader] Warning: Could not download {video_id}: {e}")
+            print(f"Warning: couldn't download {video_id}: {e}")
             return None
 
     def get_splits(
@@ -94,5 +90,5 @@ class VideoMMELoader:
 if __name__ == "__main__":
     loader = VideoMMELoader()
     df = loader.load_metadata()
-    print("\n[DataLoader] Class distribution across 90 videos:")
+    print("Class distribution:")
     print(df["chunk_category"].value_counts())

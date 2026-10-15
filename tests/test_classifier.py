@@ -1,7 +1,4 @@
-"""
-Unit and Integration Tests for Task 1: Video Classifier.
-Run with pytest.
-"""
+"""Tests for the video classifier."""
 import pytest
 import torch
 import numpy as np
@@ -22,7 +19,7 @@ def test_model_initialization_and_size():
     param_count = sum(p.numel() for p in model.parameters())
     
     # Assert model is lightweight (< 200,000 parameters / < 1 MB)
-    assert param_count < 200_000, f"Model parameter count {param_count} is too high for a lightweight classifier!"
+    assert param_count < 200_000, f"Model parameter count {param_count} is too high for a lightweight classifier"
     assert param_count > 10_000
 
 def test_gated_attention_forward():
@@ -69,7 +66,7 @@ def test_cpu_inference_latency():
     p95_latency = np.percentile(latencies, 95)
     print(f"\n[Test Latency] CPU p95: {p95_latency:.2f} ms")
     # Assert latency is ultra-fast (< 50ms on CPU)
-    assert p95_latency < 50.0, f"Inference took too long: {p95_latency} ms"
+    assert p95_latency < 50.0, f"p95 latency {p95_latency}ms exceeds 50ms limit"
 
 def test_peas_metric_and_bootstrap_ci():
     y_true = [0, 1, 2, 0, 1, 2, 3, 4, 5, 0]

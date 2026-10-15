@@ -1,12 +1,4 @@
-"""
-Multimodal Feature Extraction for Task 1: Video Classifier.
-Implements:
-1. Sparse Keyframe Sampling (4-8 frames across timeline).
-2. Semantic Visual Representation via MobileNetV3-Small (576-dim).
-3. Motion Dynamics / Kinetic Energy Delta (<2ms temporal variance).
-4. Audio Presence / Energy estimation.
-5. Caching layer for instantaneous downstream training/eval.
-"""
+"""Feature extraction: visual embeddings + motion dynamics from video frames."""
 import os
 import cv2
 import numpy as np
@@ -24,12 +16,12 @@ class FeatureExtractor:
         self.config = config or ModelConfig()
         self.device = torch.device(self.config.device)
 
-        # Pretrained MobileNetV3-Small (fast, ~9MB, 576-dim feature output)
+        # MobileNetV3-Small for visual features (~9MB, 576-d output)
         try:
             weights = models.MobileNet_V3_Small_Weights.DEFAULT
             base_model = models.mobilenet_v3_small(weights=weights)
         except Exception as e:
-            print(f"[Features] Warning: Could not load remote weights ({e}), falling back to initialized model.")
+            print(f"Warning: remote weights unavailable ({e}), using random init")
             base_model = models.mobilenet_v3_small(weights=None)
         self.visual_backbone = base_model.features.to(self.device).eval()
         self.pooling = base_model.avgpool.to(self.device)
@@ -42,10 +34,7 @@ class FeatureExtractor:
         ])
 
     def sample_keyframes(self, video_path: str, num_frames: Optional[int] = None) -> Tuple[List[np.ndarray], List[float]]:
-        """
-        Extracts sparse keyframes uniformly across the video timeline.
-        Returns list of RGB frames and their normalized timestamps [0.0 - 1.0].
-        """
+        """Sample N keyframes uniformly across the video timeline."""
         n_frames = num_frames or self.config.num_frames
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
@@ -56,7 +45,7 @@ class FeatureExtractor:
         if total_frames <= 0:
             total_frames = 100
 
-        # Uniform timestamps across duration
+        # evenly spaced across the video
         frame_indices = np.linspace(0, max(0, total_frames - 1), n_frames, dtype=int)
         sampled_frames = []
         timestamps = []
@@ -75,11 +64,7 @@ class FeatureExtractor:
         return sampled_frames, timestamps
 
     def compute_motion_dynamics(self, frames: List[np.ndarray]) -> np.ndarray:
-        """
-        Computes inter-frame temporal kinetic delta (<2ms).
-        Distinguishes high-motion sports/gaming from static podcasts/interviews.
-        Returns an [N, motion_dim] feature array.
-        """
+        """Compute motion deltas between consecutive frames. Returns [N, 8] features."""
         n = len(frames)
         motion_features = []
         grays = [cv2.cvtColor(f, cv2.COLOR_RGB2GRAY) for f in frames]
@@ -90,17 +75,16 @@ class FeatureExtractor:
             else:
                 diff = cv2.absdiff(grays[i], grays[i - 1])
 
-            # Statistical motion moments
+            # basic stats from the frame diff
             mean_motion = np.mean(diff) / 255.0
             std_motion = np.std(diff) / 255.0
             p90_motion = np.percentile(diff, 90) / 255.0
 
-            # Spatial gradient energy (edge density)
+            # edge density via sobel
             sobelx = cv2.Sobel(grays[i], cv2.CV_32F, 1, 0, ksize=3)
             sobely = cv2.Sobel(grays[i], cv2.CV_32F, 0, 1, ksize=3)
             edge_energy = np.mean(np.sqrt(sobelx**2 + sobely**2)) / 255.0
 
-            # 8-dim motion descriptor
             feat = [
                 mean_motion,
                 std_motion,
@@ -117,10 +101,7 @@ class FeatureExtractor:
 
     @torch.no_grad()
     def extract_visual_features(self, frames: List[np.ndarray]) -> np.ndarray:
-        """
-        Extracts semantic visual vectors via MobileNetV3-Small.
-        Returns an [N, visual_dim] array (N=num_frames, visual_dim=576).
-        """
+        """Run MobileNetV3 on frames, returns [N, 576] feature array."""
         tensors = []
         for f in frames:
             pil_img = Image.fromarray(f)
@@ -131,13 +112,7 @@ class FeatureExtractor:
         return pooled.cpu().numpy()
 
     def extract_video_features(self, video_path: str) -> Dict[str, np.ndarray]:
-        """
-        Full feature pipeline for a single video:
-        Returns:
-            'visual': [num_frames, 576]
-            'motion': [num_frames, 8]
-            'temporal_seq': [num_frames, 584] (concatenated multimodal sequence)
-        """
+        """Full feature pipeline for one video. Returns visual, motion, and combined tensors."""
         frames, timestamps = self.sample_keyframes(video_path)
         visual_feats = self.extract_visual_features(frames)
         motion_feats = self.compute_motion_dynamics(frames)
@@ -154,7 +129,7 @@ class FeatureExtractor:
 
 if __name__ == "__main__":
     extractor = FeatureExtractor()
-    print("[Features] Feature extractor initialized successfully.")
+    print("Feature extractor ready.")
     # Test on synthetic frame array
     dummy_frames = [np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8) for _ in range(8)]
     vis = extractor.extract_visual_features(dummy_frames)

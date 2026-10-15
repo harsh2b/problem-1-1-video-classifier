@@ -1,12 +1,4 @@
-"""
-Main CLI Entrypoint for Task 1: Video Classifier.
-Invoked by AIntropy Grader Bot via run.yaml.
-Supports:
-    --benchmark : Run full evaluation and compute PEAS score with 95% Bootstrap CI.
-    --train     : Train or retrain model on Video-MME dataset.
-    --predict   : Run end-to-end inference on a video file.
-    --json      : Output results as machine-readable JSON.
-"""
+"""CLI entrypoint for the video classifier."""
 import argparse
 import json
 import sys
@@ -20,7 +12,7 @@ from src.config import ModelConfig
 
 def main():
     parser = argparse.ArgumentParser(
-        description="AIntropy Task 1: Lightweight Multimodal Video Classifier for Chunking Strategy Optimization."
+        description="Video classifier for chunking strategy selection."
     )
     parser.add_argument(
         "--benchmark", 
@@ -54,12 +46,12 @@ def main():
     pipeline = ClassifierPipeline(config=config)
 
     if args.train:
-        print("[Task 1] Initiating training run...")
+        print("Starting training...")
         res = pipeline.train()
         if args.json:
             print(json.dumps(res, indent=2))
         else:
-            print("\n>>> Training and Evaluation Completed Successfully <<<")
+            print("\nTraining complete.")
             print(f"Accuracy: {res['metrics']['accuracy'] * 100:.2f}%")
             print(f"Macro-F1: {res['metrics']['macro_f1']:.4f}")
             print(f"PEAS Score: {res['peas_score']}")
@@ -79,33 +71,29 @@ def main():
         if args.json:
             print(json.dumps(result, indent=2))
         else:
-            print("\n================ VIDEO CLASSIFICATION RESULT ================")
-            print(f"Target Video:             {video_path}")
-            print(f"Predicted Category:       {result['category']}")
-            print(f"Confidence:               {result['confidence'] * 100:.2f}%")
-            print(f"Uncertainty Flag:         {'YES (Tier-2 Escalation Needed)' if result['is_uncertain'] else 'NO (High Confidence)'}")
-            print(f"Recommended Chunking:     {result['chunking_strategy']}")
-            print(f"Chunking Trigger Rule:    {result['chunking_trigger']}")
-            print(f"Strategic Rationale:      {result['chunking_rationale']}")
-            print(f"Inference Latency:        {result['inference_latency_ms']} ms")
-            print("==============================================================")
+            print(f"\nTarget Video: {video_path}")
+            print(f"Category: {result['category']}")
+            print(f"Confidence: {result['confidence'] * 100:.1f}%")
+            print(f"Uncertain: {'Yes' if result['is_uncertain'] else 'No'}")
+            print(f"Recommended Chunking: {result['chunking_strategy']}")
+            print(f"Chunking Trigger Rule: {result['chunking_trigger']}")
+            print(f"Rationale: {result['chunking_rationale']}")
+            print(f"Inference Latency: {result['inference_latency_ms']} ms")
 
     else:
         # Default action: run benchmark
-        print("[Task 1] Running evaluation benchmark on Video-MME 10% sample...")
+        print("Running benchmark...")
         res = pipeline.evaluate()
         if args.json:
             print(json.dumps(res, indent=2))
         else:
-            print("\n================ AINTROPY EVALUATION REPORT ================")
-            print(f"Top-1 Accuracy:           {res['metrics']['accuracy'] * 100:.2f}%")
-            print(f"Macro-F1 Score:           {res['metrics']['macro_f1']:.4f}")
-            print(f"95% Bootstrap CI:         Accuracy {res['confidence_intervals']['accuracy_ci']}, F1 {res['confidence_intervals']['macro_f1_ci']}")
-            print(f"Latency p50 / p95:        {res['latency']['p50_ms']} ms / {res['latency']['p95_ms']} ms")
-            print(f"Throughput:               {res['latency']['throughput_fps']} inferences/sec")
-            print(f"Model Parameters:         {res['model_parameters']:,} ({res['model_size_kb']} KB)")
-            print(f"PEAS Score (Novel):       {res['peas_score']}")
-            print("============================================================")
+            print(f"\nAccuracy: {res['metrics']['accuracy'] * 100:.2f}%")
+            print(f"Macro-F1: {res['metrics']['macro_f1']:.4f}")
+            print(f"95% Bootstrap CI: Accuracy {res['confidence_intervals']['accuracy_ci']}, F1 {res['confidence_intervals']['macro_f1_ci']}")
+            print(f"Latency p50 / p95: {res['latency']['p50_ms']} ms / {res['latency']['p95_ms']} ms")
+            print(f"Throughput: {res['latency']['throughput_fps']} inferences/sec")
+            print(f"Model Parameters: {res['model_parameters']:,} ({res['model_size_kb']} KB)")
+            print(f"PEAS Score: {res['peas_score']}")
 
 if __name__ == "__main__":
     main()

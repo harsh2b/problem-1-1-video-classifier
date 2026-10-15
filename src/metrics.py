@@ -1,11 +1,4 @@
-"""
-Evaluation and Statistical Metrics for Task 1: Video Classifier.
-Implements:
-1. Standard Classification Metrics (Accuracy, Macro-F1, Precision, Recall, Confusion Matrix).
-2. Latency Profiling (p50, p95, Throughput).
-3. Novel Statistical Metric: PEAS (Pareto Efficiency-Accuracy Score).
-4. Bootstrap 95% Confidence Intervals (1,000 iterations).
-"""
+"""Evaluation metrics: accuracy, F1, PEAS score, bootstrap CIs, and latency profiling."""
 import time
 import numpy as np
 import pandas as pd
@@ -15,9 +8,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from src.config import CLASS_NAMES
 
 def compute_standard_metrics(y_true: List[int], y_pred: List[int]) -> Dict[str, Any]:
-    """
-    Computes global and per-class performance metrics.
-    """
+    """Standard classification metrics."""
     acc = accuracy_score(y_true, y_pred)
     macro_f1 = f1_score(y_true, y_pred, average="macro", zero_division=0)
     weighted_f1 = f1_score(y_true, y_pred, average="weighted", zero_division=0)
@@ -48,10 +39,7 @@ def compute_bootstrap_confidence_intervals(
     n_bootstraps: int = 1000, 
     confidence_level: float = 0.95
 ) -> Dict[str, Tuple[float, float]]:
-    """
-    Computes statistical non-parametric bootstrap confidence intervals.
-    Generates defensible statistical bounds on accuracy and Macro-F1.
-    """
+    """Bootstrap 95% confidence intervals for accuracy and macro-F1."""
     np.random.seed(42)
     n = len(y_true)
     boot_accs = []
@@ -80,14 +68,7 @@ def compute_peas_score(
     latency_p95_ms: float, 
     param_count: int
 ) -> float:
-    """
-    Novel Statistical Metric: PEAS (Pareto Efficiency-Accuracy Score).
-    Reward: High classification capability (Macro-F1^2).
-    Penalty: Logarithmic penalty for high tail latency (p95 ms) and parameter bloat.
-
-    Formula:
-        PEAS = (Macro_F1^2) / (log10(p95_ms + 1) * log2(Params_in_M + 1))
-    """
+    """PEAS = Macro_F1^2 / (log10(p95_ms + 1) * log2(Params_M + 1)). Balances accuracy vs cost."""
     params_in_m = param_count / 1_000_000.0
     latency_term = np.log10(max(1.0, latency_p95_ms) + 1.0)
     footprint_term = np.log2(params_in_m + 1.0) + 0.1 # regularizer
@@ -96,9 +77,7 @@ def compute_peas_score(
     return round(float(peas), 4)
 
 class LatencyProfiler:
-    """
-    High-resolution latency profiler for system benchmarking.
-    """
+    """Simple latency tracker."""
     def __init__(self):
         self.latencies_ms: List[float] = []
 

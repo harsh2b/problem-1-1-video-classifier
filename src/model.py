@@ -1,11 +1,4 @@
-"""
-Model Architecture for Task 1: Video Classifier.
-Implements:
-1. Gated Attention Multiple-Instance Learning (MIL) for temporal aggregation.
-2. Lightweight Calibrated Classification Head with temperature scaling.
-3. Automated Chunking Policy Router.
-4. Tier-2 Escalation / Uncertainty flag.
-"""
+"""Gated attention classifier for video format prediction."""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -15,10 +8,7 @@ import numpy as np
 from src.config import ModelConfig, CHUNKING_POLICIES, CLASS_NAMES, NUM_CLASSES
 
 class GatedTemporalAttention(nn.Module):
-    """
-    Gated Attention Mechanism (Ilse et al., ICML 2018).
-    Learns dynamic attention weights across the temporal sequence of frames.
-    """
+    """Gated attention pooling over temporal frame sequences (Ilse et al., ICML 2018)."""
     def __init__(self, in_dim: int, hidden_dim: int = 128):
         super().__init__()
         self.fc_tanh = nn.Linear(in_dim, hidden_dim)
@@ -38,9 +28,7 @@ class GatedTemporalAttention(nn.Module):
         return pooled, attention_weights.squeeze(-1)
 
 class VideoFormatClassifier(nn.Module):
-    """
-    Multimodal Video Format Classifier with Attention Pooling and Calibrated Head.
-    """
+    """Classifier head with attention pooling and calibrated softmax."""
     def __init__(self, config: Optional[ModelConfig] = None):
         super().__init__()
         self.config = config or ModelConfig()
@@ -70,7 +58,6 @@ class VideoFormatClassifier(nn.Module):
 
     def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
-        Forward pass.
         Args:
             x: [Batch, SeqLen, InDim]
         Returns:
@@ -83,10 +70,7 @@ class VideoFormatClassifier(nn.Module):
         return logits, attn_weights
 
     def predict(self, x: torch.Tensor) -> Dict[str, Any]:
-        """
-        Inference with temperature-calibrated probabilities, confidence check,
-        and Chunking Strategy Policy routing.
-        """
+        """Run inference with calibrated probs and chunking strategy lookup."""
         self.eval()
         with torch.no_grad():
             if x.dim() == 2:
@@ -100,11 +84,11 @@ class VideoFormatClassifier(nn.Module):
             confidence = float(probs[pred_idx])
             pred_class = CLASS_NAMES[pred_idx]
 
-            # Uncertainty & Escalation check
+            # check if prediction is uncertain
             is_uncertain = confidence < self.config.uncertainty_threshold
             margin = confidence - float(np.partition(probs, -2)[-2]) if len(probs) > 1 else confidence
 
-            # Policy routing
+            # look up the chunking strategy
             chunking_info = CHUNKING_POLICIES.get(pred_class, {
                 "strategy": "Standard Fixed-Window (10s)",
                 "trigger": "Fallback default",
@@ -128,7 +112,7 @@ if __name__ == "__main__":
     cfg = ModelConfig()
     model = VideoFormatClassifier(cfg)
     total_params = sum(p.numel() for p in model.parameters())
-    print(f"[Model] Initialized VideoFormatClassifier with {total_params:,} parameters ({total_params * 4 / 1024:.1f} KB).")
+    print(f"Model parameters: {total_params:,} ({total_params * 4 / 1024:.1f} KB)")
 
     dummy_input = torch.randn(2, 8, cfg.visual_dim + cfg.motion_dim)
     logits, attn = model(dummy_input)

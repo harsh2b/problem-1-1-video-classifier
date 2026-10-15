@@ -1,11 +1,8 @@
-"""
-Configuration and Taxonomy Mapping for Task 1: Video Classifier.
-Defines category definitions, chunking policies, and model hyperparameters.
-"""
+"""Config and taxonomy for the video classifier."""
 from dataclasses import dataclass, field
 from typing import Dict, List
 
-# 6 Core Chunking Categories mapped from Video-MME sub-categories
+# Map Video-MME sub-categories to our 6 chunking buckets
 CATEGORY_TAXONOMY: Dict[str, List[str]] = {
     "Sports_HighMotion": [
         "Athletics", "Football", "Basketball", "Exercise", "Acrobatics", "Other Sports"
@@ -28,13 +25,13 @@ CATEGORY_TAXONOMY: Dict[str, List[str]] = {
     ]
 }
 
-# Inverted mapping: sub_category -> Chunking Category
+# Reverse lookup
 SUB_TO_CATEGORY: Dict[str, str] = {}
 for cat, subs in CATEGORY_TAXONOMY.items():
     for sub in subs:
         SUB_TO_CATEGORY[sub] = cat
 
-# Chunking Strategies associated with each category
+# What chunking approach fits each category
 CHUNKING_POLICIES: Dict[str, Dict[str, str]] = {
     "Sports_HighMotion": {
         "strategy": "Dense Optical Flow Window (2-5s)",
