@@ -1,0 +1,15 @@
+datasets
+huggingface_hub
+opencv-python-headless
+torch
+torchvision
+scikit-learn
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+pyyaml
+pytest
+ipykernel
+notebook

@@ -1,0 +1,213 @@
+video_id,question_id,task_type,question,options,answer,duration,domain,sub_category,chunk_category,class_idx
+YPaLGP_xr-w,020-1,Object Reasoning,"Based on the video, which of the following statements provides the most accurate explanation for why the Statue of Liberty is green in color?","['A. Because the copper is rusty.' 'B. Because she was painted green.'
+ ""C. Because people didn't like her original color.""
+ 'D. Because she is not the origin one any more.']",A,short,Knowledge,Literature & Art,Performance_Narrative,5
+jkNxmTrrZSk,024-1,Information Synopsis,What does the video depict?,"['A. A virus attacks a cell.' 'B. The replication of DNA.'
+ 'C. A neuron sends a signal.'
+ 'D. White blood cells attacking a pathogen.']",A,short,Knowledge,Biology & Medicine,Wildlife_Nature,3
+Qyg_91gNHCc,051-1,Counting Problem,How many bridges can be spotted in the video?,['A. Three.' 'B. Four.' 'C. Five.' 'D. One.'],B,short,Knowledge,Geography,Wildlife_Nature,3
+DF_J3vCcbBA,053-1,Attribute Perception,How does the color of lava change when exposed to the air for a short while?,"['A. It turns blue.' 'B. It turns red.' 'C. It turns silver.'
+ 'D. It turns black.']",C,short,Knowledge,Geography,Wildlife_Nature,3
+K0mjUgHKfJo,055-1,Counting Problem,How many circles can be observed in the first few seconds of the video?,['A. Four.' 'B. Five.' 'C. Nine.' 'D. Six.'],B,short,Knowledge,Geography,Wildlife_Nature,3
+NEFG7YcIDcI,059-1,Object Recognition,Which ocean do the thunderstorms in the video need to cross before they reach America?,"['A. The Atlantic ocean.' 'B. The Pacific Ocean.' 'C. The Indian Ocean.'
+ 'D. The Arctic Ocean.']",A,short,Knowledge,Geography,Wildlife_Nature,3
+8TNPeimqOO0,060-1,Object Recognition,Which element doesn't show up in the video?,['A. Iceberg.' 'B. Orcas.' 'C. Sea bird.' 'D. Polar bear.'],D,short,Knowledge,Geography,Wildlife_Nature,3
+7iXM5aq53Ts,073-1,OCR Problems,"As depicted in the video, which smart phone is advertised on the screen of the laptop?","['A. iPhone 15 Pro Max.' 'B. iPhone 14 Pro.' 'C. iPhone 12.'
+ 'D. iPhone 6s.']",D,short,Knowledge,Life Tip,LifeRecord_Egocentric,4
+M69Sn3OERZo,094-1,Attribute Perception,What color is the monkey depicted in the video?,['A. Yellow.' 'B. Green.' 'C. Red.' 'D. Blue.'],A,short,Film & Television,Animation,Performance_Narrative,5
+G267g0DpCVg,103-1,Object Recognition,Which item  does the man throw into the trash at the beginning of the video?,"['A. A fork.' 'B. A pair of chopsticks.' 'C. A box of noodles.'
+ 'D. A spoon.']",A,short,Film & Television,Movie & TV Show,Performance_Narrative,5
+MPfuSfiZ96A,112-1,Counting Problem,How many birds can be observed perched on the street lamp in the first half of the video?,['A. 6.' 'B. 5.' 'C. 7.' 'D. 8.'],B,short,Film & Television,Documentary,Performance_Narrative,5
+c0siCya457M,124-1,Information Synopsis,"According to the video, which of the following events occurred in India?","['A. Making a movie about war.'
+ 'B. A Bollywood movie broke box office records.'
+ 'C. Crops are being burned.' 'D. The farmers staged A protest.']",D,short,Film & Television,News Report,Podcast_TalkingHead,2
+YlAefotZNAc,127-1,Attribute Perception,What clothes were the boys being interviewed wearing?,"['A. Black leather jacket.' 'B. Blue suit and red tie.'
+ 'C. Yellow plaid shirt.' 'D. Yellow rescue suit.']",C,short,Film & Television,News Report,Podcast_TalkingHead,2
+LlajSKnbcGk,136-1,Counting Problem,"According to the video, how many persons are shot to death by the player before he is dead?",['A. 7.' 'B. 6.' 'C. 8.' 'D. 5.'],A,short,Sports Competition,Esports,Gameplay_Esports,1
+913JhnW28U4,167-1,Attribute Perception,From which country does the first-place athlete in the video originate?,['A. China.' 'B. Italy.' 'C. Hungary.' 'D. South Korea.'],A,short,Sports Competition,Athletics,Sports_HighMotion,0
+wGfRSojH0PE,176-1,OCR Problems,What is the score after this game?,['A. 20-22.' 'B. 23-20.' 'C. 20-23.' 'D. 23-22.'],D,short,Sports Competition,Other Sports,Sports_HighMotion,0
+2QTiAmvygC4,182-1,Attribute Perception,Which color of pants is the person wearing while playing the piano in the video?,['A. Black.' 'B. Purple.' 'C. Brown.' 'D. Blue.'],C,short,Artistic Performance,Stage Play,Performance_Narrative,5
+pcm_E7UoKLo,204-1,Attribute Perception,"According to the video, what country does the shortest woman in the world come from?",['A. Nepal.' 'B. China.' 'C. India.' 'D. United States.'],C,short,Artistic Performance,Variety Show,Performance_Narrative,5
+026dzf-vc5g,212-1,Action Recognition,Which skill is not included in the little girl's performance?,['A. Backflip.' 'B. Cartweel.' 'C. Handstand.' 'D. Full split.'],A,short,Artistic Performance,Acrobatics,Sports_HighMotion,0
+FlcVBKTSjRs,222-1,Counting Problem,How many spoons are used to make the holder in the video?,['A. 16.' 'B. 10.' 'C. 6.' 'D. 12.'],A,short,Life Record,Handicraft,LifeRecord_Egocentric,4
+9v9NHoTXc-Q,244-1,Attribute Perception,What color are the shoes worn by the boy with the white hat?,['A. Bright blue.' 'B. Black and white.' 'C. Dark purple.' 'D. Grey.'],A,short,Life Record,Fashion,LifeRecord_Egocentric,4
+frX8GujpmkI,246-1,Spatial Reasoning,What is the emotion of the video?,['A. Solemn.' 'B. Enjoyable.' 'C. Heartbroken.' 'D. Anxious.'],B,short,Life Record,Fashion,LifeRecord_Egocentric,4
+uVR-DZQuRbM,247-1,Object Reasoning,What is the role of the man speaking in the video?,"['A. Eye pencil designer.' 'B. Makeup artist.' 'C. Model agent.'
+ 'D. Company manager.']",B,short,Life Record,Fashion,LifeRecord_Egocentric,4
+OGQ7KwUXuBk,249-1,Object Recognition,What is the pregnant woman wearing in the video?,"['A. A strapless, form-fitting dress adorned with sequins.'
+ 'B. A mint green dress with a strapless design.'
+ 'C. An elegant black dress with long sleeves.'
+ 'D. A striking green dress with a large, ruffled detail.']",C,short,Life Record,Fashion,LifeRecord_Egocentric,4
+2iHmlBmLKUE,250-1,Information Synopsis,Which topic does the video cover?,"['A. How to apply perfume.' 'B. How the perfume smells.'
+ 'C. How to refill perfume.' 'D. How to choose a right perfume.']",C,short,Life Record,Fashion,LifeRecord_Egocentric,4
+RU8IfXp7LbE,259-1,OCR Problems,What time does the man in the video get up?,['A. 5:59 a.m.' 'B. 6:00 a.m.' 'C. 6:00 p.m.' 'D. 5:59 p.m.'],B,short,Life Record,Daily Life,LifeRecord_Egocentric,4
+2gFxZmb0dMo,266-1,Object Reasoning,"What is the most likely role of the blonde woman in the video, clad in a blue T-shirt and black shorts?",['A. Driver.' 'B. Teacher.' 'C. Tourist.' 'D. Tour guide.'],D,short,Life Record,Travel,LifeRecord_Egocentric,4
+27YZLpw0M98,268-1,OCR Problems,What camera does the protagonist in the video use to shoot?,['A. Canon.' 'B. Leica.' 'C. Nikon.' 'D. SONY.'],C,short,Life Record,Travel,LifeRecord_Egocentric,4
+Lv7cYKTYE2g,295-1,Attribute Perception,What color is Ms. Milani's boss' clothing in the video?,['A. Grey.' 'B. Blue.' 'C. Purple.' 'D. Green.'],D,short,Multilingual,Multilingual,Performance_Narrative,5
+g7PjwIzqyCQ,299-1,Information Synopsis,What is the primary focus of the video?,"['A. How China and Korea cooperate to mentain the beauty of nature in Baekdu Mountain.'
+ 'B. The designatyion of Baekdu Mountain by UNESCO.'
+ 'C. Whether Baekdu Mountain belongs to Korea or China.'
+ 'D. The importance of Baekdu Mountain and some worries about its about its ownership.']",D,short,Multilingual,Multilingual,Performance_Narrative,5
+IaTaaNinolU,316-1,Attribute Perception,Which of the following features can describe Hamlet in the video?,"['A. Wearing brown coat.' 'B. Blonde hair.' 'C. Thick beard.'
+ 'D. Long hair.']",D,medium,Knowledge,Literature & Art,Performance_Narrative,5
+URUJD5NEXC8,323-1,Object Recognition,Which cellular structure is responsible for receiving proteins according to the video?,"['A. Golgi apparatus (Golgi body).' 'B. Nucleus.' 'C. Ribosome.'
+ 'D. Mitochondrion.']",A,medium,Knowledge,Biology & Medicine,Wildlife_Nature,3
+zIbNJCSCEjk,332-1,Object Recognition,What event wasn't mentioned within the video?,"['A. Witness the inflation in Venezuela.' 'B. Fed rate hike.'
+ 'C. The epidemic is affecting global supply chains.'
+ 'D. Bicycle factory closed.']",A,medium,Knowledge,Finance & Commerce,Podcast_TalkingHead,2
+MaAv2IVzqhM,346-1,Information Synopsis,What is the main theme of the video?,"['A. The history and achievements of LIGO.'
+ 'B. The construction process of LIGO facilities.'
+ 'C. The daily operations of LIGO.'
+ 'D. The future goals and planned upgrades for LIGO.']",A,medium,Knowledge,Astronomy,Wildlife_Nature,3
+_qepWb_NVj4,358-1,Counting Problem,How many different points of views about the amount of continents are mentioned in the video?,['A. Five.' 'B. Seven.' 'C. Four.' 'D. Six.'],A,medium,Knowledge,Geography,Wildlife_Nature,3
+7fnVcXfPe5c,371-1,Spatial Perception,"Which option correctly indicates the location of the ""psychological tip"" written in white on the board when illustrating the third suggestion in the video?","['A. Between ""REMOVE THE FILTER"" and ""THREAD THE CONVERSATION"".'
+ 'B. Below ""THE PRATFALL EFFECT"".'
+ 'C. Between ""THREAD THE CONVERSATION"" and ""THE PRATFALL EFFECT"".'
+ ""D. It can't be recognized in the video.""]",B,medium,Knowledge,Life Tip,LifeRecord_Egocentric,4
+bepwr1-CNRU,385-1,Temporal Reasoning,Which of the following is correct for ranking Tesla models from shortest to longest 0-60 mph acceleration time based on the video?,"['A. Roaster (2008), Model X (Plaid), Model S (Whitestar), Model Y (Performance).'
+ 'B. Model X (Plaid), Model Y (Long Range), Model S (Plaid), Model 3 (Standard Range Plus).'
+ 'C. Roaster (2nd Generation), Model X (Plaid), Model S (Long Range), Model Y (Performance).'
+ 'D. Model Y (Performance), Roaster (2008), Model S (Long Range), Model 3 (Standard Range Plus).']",C,medium,Knowledge,Technology,Podcast_TalkingHead,2
+QxYHkKLaFmY,407-1,Object Recognition,What is covered on the ground of the castle?,['A. Stones.' 'B. Food.' 'C. Clothes.' 'D. Glod.'],D,medium,Film & Television,Movie & TV Show,Performance_Narrative,5
+QrmxMNBhH2Q,417-1,Information Synopsis,What does this video end with?,"['A. An interview about how one of the members grows up in 2010.'
+ 'B. A behind-the-scenes footage of a music video shoot in 2010.'
+ ""C. A compilation of the band's funniest moments on tour in 2010.""
+ 'D. The audition of one of the members in 2010.']",D,medium,Film & Television,Documentary,Performance_Narrative,5
+3EQLFHRHpag,419-1,Information Synopsis,The problems people encounter in the video are caused by what?,"['A. Catastrophic weather.' 'B. Global warming.' 'C. Financial crisis.'
+ 'D. Oil crisis.']",B,medium,Film & Television,Documentary,Performance_Narrative,5
+HK13nVxBYxI,425-1,Counting Problem,How many people were interviewed in the video?,['A. 4.' 'B. 2.' 'C. 1.' 'D. 3.'],B,medium,Film & Television,News Report,Podcast_TalkingHead,2
+ACvLYz9nHvg,446-1,Counting Problem,How many consecutive hits did player #39 in the video have in his first start?,['A. 2.' 'B. 3.' 'C. 4.' 'D. 5.'],C,medium,Sports Competition,Basketball,Sports_HighMotion,0
+KlbDo9o5SC8,455-1,Action Recognition,"What are the players doing before the match formally begins, according to the video?","['A. Exchanging team flags.' 'B. Participating in the coin toss.'
+ 'C. Warming up on the field.' 'D. Singing their national anthems.']",D,medium,Sports Competition,Football,Sports_HighMotion,0
+SBssmtYTJpM,462-1,Action Recognition,What is the first diving event shown in the video?,"[""A. Men's 3m springboard."" ""B. Women's 10m platform.""
+ ""C. Men's 10m platform."" ""D. Women's 3m springboard.""]",C,medium,Sports Competition,Athletics,Sports_HighMotion,0
+ZQIZx5Oqw88,464-1,Temporal Reasoning,"In the introductions of the athletes at the beginning of the video, what is the sequence of the French athlete, the American athlete, and the South African athlete?","['A. The American athlete, the South African athlete, the French athlete.'
+ 'B. The French athlete, the American athlete, the South African athlete.'
+ 'C. The American athlete, the French athlete, the South African athlete.'
+ 'D. The South African athlete, the French athlete, the American athlete.']",D,medium,Sports Competition,Athletics,Sports_HighMotion,0
+UIX6f0xMQ2U,466-1,Counting Problem,How many times does the video show a long jump with a distance of 8 metres 53?,['A. 2.' 'B. 4.' 'C. 3.' 'D. 6.'],C,medium,Sports Competition,Athletics,Sports_HighMotion,0
+vf3sPa2W0sA,467-1,Object Recognition,What are the medals won by the athletes recorded in the video?,"['A. Four gold medals and one silver medals.'
+ 'B. Three gold medals. and two silver medals.' 'C. Five gold medals.'
+ 'D. Two gold medals and three silver medals.']",B,medium,Sports Competition,Athletics,Sports_HighMotion,0
+DfZIv2FKWj4,476-1,OCR Problems,What is the score at the half time?,"['A. England 3 v.s. Samoa 43.' 'B. England 34 v.s. Samoa 3.'
+ 'C. England 3 v.s. Samoa 34.' 'D. England 43 v.s. Samoa 3.']",D,medium,Sports Competition,Other Sports,Sports_HighMotion,0
+awHc8IySU-I,480-1,Object Reasoning,"Among the games, which winner has the quickest finishing time?","['A. The first one.' 'B. The second one.' 'C. The third one.'
+ 'D. The last one.']",D,medium,Sports Competition,Other Sports,Sports_HighMotion,0
+_w4XRiUVfY4,489-1,Counting Problem,How many people appear in the video?,['A. 13.' 'B. 14.' 'C. 15.' 'D. 12.'],C,medium,Artistic Performance,Stage Play,Performance_Narrative,5
+a8IGDMrohnY,494-1,Object Recognition,What does the little magician wear?,"['A. A necklace.' 'B. A white sockpuppet.' 'C. A pair of glasses.'
+ 'D. A pair of earings.']",C,medium,Artistic Performance,Magic Show,Performance_Narrative,5
+a7jZszvFpTY,515-1,Temporal Reasoning,"According to this video, in which order do the following events happened?
+(a) Forming a human pole.
+(b) Jumping through white hoops.
+(c) Forming a human cross.",['A. (a)(b)(c).' 'B. (b)(c)(a).' 'C. (a)(c)(b).' 'D. (c)(b)(a).'],B,medium,Artistic Performance,Acrobatics,Sports_HighMotion,0
+3EQzRz-V7uE,526-1,Counting Problem,"At the beginning of this video, how many rounds of yellow thread are wrapped around the fingers?",['A. 210.' 'B. 20.' 'C. 10.' 'D. 120.'],D,medium,Life Record,Handicraft,LifeRecord_Egocentric,4
+biiLScgI3u4,528-1,Object Recognition,Which of the following ingredients is not used in the video?,['A. Ladle.' 'B. Wool thread.' 'C. Paper.' 'D. Lighter.'],C,medium,Life Record,Handicraft,LifeRecord_Egocentric,4
+ooqdg9Wr-mo,535-1,OCR Problems,What food in the video is worth $750?,"['A. Barbecue.' 'B. Crayfish.' 'C. Gold Flake Ice Cream.'
+ 'D. Roast chicken.']",A,medium,Life Record,Food,LifeRecord_Egocentric,4
+6DbsOZU8mBM,540-1,Object Reasoning,"Extrapolating from the video, what does the brand OSMO in the video sell?",['A. Kobe beef.' 'B. Salt.' 'C. Molasses.' 'D. Black truffle.'],B,medium,Life Record,Food,LifeRecord_Egocentric,4
+x-ccfWcbht4,547-1,Object Reasoning,In which year did the main character in the video win his second Emmy?,['A. 2021.' 'B. 2022.' 'C. 2019.' 'D. 2024.'],B,medium,Life Record,Fashion,LifeRecord_Egocentric,4
+NeLj-gLWgug,560-1,Temporal Reasoning,Which of the following options correctly sorts the sequence of events in the video?,"['A. Eating, having a rest, sweeping the floor.'
+ 'B. Taking a shower, having lunch, studying.'
+ 'C. Working out in the gym, taking a shower, eating.'
+ 'D. Cleaning up the house, having dinner, hanging out.']",C,medium,Life Record,Daily Life,LifeRecord_Egocentric,4
+A30IuIjQYYg,561-1,Spatial Reasoning,Which country is recorded by the video?,['A. Thailand.' 'B. Cambodia.' 'C. Laos.' 'D. Myanmar.'],A,medium,Life Record,Travel,LifeRecord_Egocentric,4
+lNvBXLbInXE,584-1,OCR Problems,What is the second yoga pranayama method demonstrated by the man in the video?,['A. Markatasana.' 'B. Bhastrika.' 'C. Anulom vilom.' 'D. Kapalbhati.'],D,medium,Life Record,Exercise,Sports_HighMotion,0
+xKiRmesHWIA,605-1,Information Synopsis,What's the main idea of the video?,"['A. What did the French gain from World War One.'
+ 'B. Why the Austro-Hungarian Empire was divided.'
+ 'C. The process of World War One.'
+ 'D. How the Austro-Hungarian Empire rises and falls.']",D,long,Knowledge,Humanity & History,Podcast_TalkingHead,2
+O7zcPvQDIMU,610-1,Information Synopsis,What is the best title for this video?,"['A. The terrifying reality of Medieval life during the Norman invasion.'
+ 'B. The Battle of Stamford Bridge and Hastings.'
+ 'C. The battle between Harold and William.'
+ ""D. Anglo-Saxon's fall in England.""]",A,long,Knowledge,Humanity & History,Podcast_TalkingHead,2
+ElWG0_kjy_Y,613-1,Information Synopsis,What is the main idea of the video?,"[""A. Da Vinci's tragic life journey.""
+ ""B. Da Vinci's talent in both art and science.""
+ 'C. Whose portrait is Mona Lisa?' ""D. Da Vinci's masterpiece-Mona Lisa.""]",D,long,Knowledge,Literature & Art,Performance_Narrative,5
+LCfBYE97rFk,615-1,Temporal Reasoning,What does Paula Scher often do when she sits down at her desk as depicted in the video?,"['A. Talking with colleagues.' 'B. Designing.' 'C. Reading her e-mail.'
+ 'D. Accomplishing nothing.']",C,long,Knowledge,Literature & Art,Performance_Narrative,5
+mOiEOs3ZlT8,620-1,Information Synopsis,What is the video mainly about?,"[""A. Ancient artists' techniques or styles."" 'B. An exhibition.'
+ 'C. Masterpieces that emerged in ancient Rome.'
+ 'D. A artistic journey in Italy Museum.']",B,long,Knowledge,Literature & Art,Performance_Narrative,5
+5LU_XY0z2ZY,621-1,Information Synopsis,What is the theme of the video?,"[""A. Enhancing metabolic health as a strategy to combat Alzheimer's disease.""
+ ""B. Research progress and application prospects of beta-amyloid as a therapeutic target for Alzheimer's disease.""
+ ""C. Failed attempts to eradicate Alzheimer's disease through current medical treatments.""
+ ""D. Research on how human behavioural science can be used to improve cognitive performance and its potential as a strategy to combat Alzheimer's disease.""]",A,long,Knowledge,Biology & Medicine,Wildlife_Nature,3
+J5Npf2xJpag,637-1,Information Synopsis,"According to the given video, what is the main focus of it?","['A. A comparison of different investment banking firms and their approaches to risk management and client relationships.'
+ 'B. The rise of retail investors and the growing importance of consumer finance in the 21st century.'
+ 'C. Highlighting the key leaders, business strategies, and navigation of financial crises of a special history period.'
+ 'D. The evolution of financial regulations and their impact on investment banks like Goldman Sachs.']",C,long,Knowledge,Finance & Commerce,Podcast_TalkingHead,2
+YtAL8y2lACs,653-1,Counting Problem,How many people does the Ross Ice Shelf team consist of?,['A. 2.' 'B. 23.' 'C. 12.' 'D. 8.'],C,long,Knowledge,Geography,Wildlife_Nature,3
+1NYQf_OXDqI,700-1,Action Reasoning,"Based on the video, what is the relationship of Tom and Jerry when they meet the witch?","['A. Competition.' 'B. Cooperation.' 'C. Hostile.'
+ 'D. No one is correct above.']",D,long,Film & Television,Animation,Performance_Narrative,5
+qd2ivr-5oEM,721-1,Information Synopsis,Which of the following contents was NOT mentioned in the video?,"['A. NBA investigates Raptors player for gambling.'
+ 'B. The price of Bitcoin plummeting.'
+ 'C. Breakdown of Israel-Hamas ceasefire talks.'
+ 'D. Journalist describes the chaos in Haiti.']",B,long,Film & Television,News Report,Podcast_TalkingHead,2
+xvQOEdwAgj0,732-1,Action Recognition,Which is the position that is banned mostly from the game?,['A. Top.' 'B. Jungle.' 'C. Mid.' 'D. Support.'],D,long,Sports Competition,Esports,Gameplay_Esports,1
+S8w44Tl5atk,738-1,Action Reasoning,Why does the player take the five cards at the beginning of this video?,"['A. These cards are powerful.' 'B. These cards are useless.'
+ 'C. These cards are all pirates.'
+ 'D. These cards cooperate with each other.']",D,long,Sports Competition,Esports,Gameplay_Esports,1
+4qYqPmIO0v0,747-1,Action Recognition,What happened to the team on the counterattack after Sabonis' first steal?,"['A. Sabonis finishes the pick-and-roll.' 'B. A teammate hit a three.'
+ 'C. Sabonis pass is broken up.' 'D. Teammate singles and fails.']",D,long,Sports Competition,Basketball,Sports_HighMotion,0
+RwdvZLz-aSk,753-1,Information Synopsis,What is this video mainly about?,"[""A. A compilation of José Mourinho's most controversial press conference moments.""
+ ""B. A retrospective of José Mourinho's childhood and early life influences on his coaching style.""
+ ""C. An exploration of the comprehensive career achievements and unique incidents in José Mourinho's football career.""
+ ""D. A discussion on the influence of José Mourinho's managerial style on modern football tactics.""]",C,long,Sports Competition,Football,Sports_HighMotion,0
+md6mZDhuR9s,760-1,Information Synopsis,What is the central theme of the video?,"[""A. The construction of Barcelona's attacking system from 2014 to the present and the path to success in the Champions League.""
+ ""B. Barcelona's three midfield tactics during Luis Enrique's tenure and highlights of the goals.""
+ ""C. The path of the 'Attacking Trio' in Barcelona's Champions League campaign.""
+ ""D. Highlights of Barcelona goalkeepers' great defenses in the 2014/2015 season with the records behind them.""]",C,long,Sports Competition,Football,Sports_HighMotion,0
+gTPHH880Cyc,762-1,Spatial Reasoning,"At the start of the race, why do the athletes line up as depicted in the video?","['A. The athletes line up in one row to create a visual spectacle for the audience, enhancing the overall experience of the race.'
+ 'B. The athletes are positioned in three rows based on their height, with taller athletes in the back row and shorter athletes in the front row.'
+ 'C. The athletes line up in three rows to allow for easier identification and tracking by the race officials and cameras.'
+ 'D. The athletes line up in two rows to provide a clear path for the athletes to move along the track during the race.']",D,long,Sports Competition,Athletics,Sports_HighMotion,0
+SB4NLADmT_k,766-1,Object Recognition,Which player is lying on the ground receiving treatment in the first half of the video?,"['A. 283 Jonathan Drack.' 'B. 295 Tosin OKE.' 'C. 150 Bing Dong.'
+ 'D. 377 Omar Craddock.']",D,long,Sports Competition,Athletics,Sports_HighMotion,0
+g8UiXbc19og,768-1,Temporal Reasoning,Which of the following options correctly sequences the order in which the competition items appear in the video?,"['A. 400m run, shot put, 110m hurdles.'
+ 'B. 100m run, shot put, long jump.' 'C. 100m run, long jump, shot put.'
+ 'D. 400m run, 110m hurdles, shot put.']",C,long,Sports Competition,Athletics,Sports_HighMotion,0
+Xjf5N9S3jAA,775-1,Counting Problem,"According to what is shown in the video, how many match points and set points does the winner have before the last rally to win this match?","['A. 2 match points and 1 set points.'
+ 'B. 2 match points and 2 set points.'
+ 'C. 1 match points and 1 set points.'
+ 'D. 1 match points and 2 set points.']",B,long,Sports Competition,Other Sports,Sports_HighMotion,0
+P69idA8JO98,786-1,Action Reasoning,How does Snow White come to meet the seven miners?,"['A. She is on a quest to find a hidden treasure.'
+ 'B. She is kidnapped by the miners from her castle.'
+ 'C. She is sent to the forest by her wicked stepmother and finds their home.'
+ 'D. She wanders into the forest out of curiosity and stumbles upon their cottage.']",C,long,Artistic Performance,Stage Play,Performance_Narrative,5
+FkrIcmXvv18,787-1,Information Synopsis,What is the main plot of the video?,"['A. The rivalry and eventual alliance between two noble houses.'
+ 'B. The forbidden romance between a young man and a woman from feuding families.'
+ 'C. The comedic mishaps of two young lovers from different cities.'
+ 'D. The quest of a knight to win the love of a princess.']",B,long,Artistic Performance,Stage Play,Performance_Narrative,5
+RgJVug6iNs8,790-1,Information Synopsis,What is the central theme of the performance?,"['A. The adventures of the three little pigs as they search for wealth and build houses.'
+ 'B. A cooking competition for the three little pigs.'
+ 'C. A suspenseful story about the disappearance of the three little pigs.'
+ 'D. A story about a battle of wits between the three little pigs and a cunning wolf.']",A,long,Artistic Performance,Stage Play,Performance_Narrative,5
+D0ZMmQjKn2Q,799-1,Action Reasoning,Why does the magician fail in the first episode?,"['A. Because the magician forgot the magic words.'
+ 'B. Because the magic box is taken by mistake.'
+ ""C. Because the magician's assistant sabotaged the performance.""
+ 'D. Because the magician was cursed by a rival magician.']",B,long,Artistic Performance,Magic Show,Performance_Narrative,5
+Cb91B0wZYLE,800-1,Temporal Reasoning,"What is the sequence in which the following magic tricks are performed in this video?
+(a) Joker inside the black Jacks sandwich is mysteriously replaced with the randomly chosen card.
+(b) The positions of Aces and random cards are swapped.
+(c) After a full circle of mixing up, the piles go back to where they started.
+(d) The order of cards is recovered from chaos.","['A. (c)(b)(a)(d).' 'B. (b)(a)(d)(c).' 'C. (d)(a)(c)(b).'
+ 'D. (a)(c)(d)(b).']",D,long,Artistic Performance,Magic Show,Performance_Narrative,5
+vDzNVHXc66U,823-1,Object Reasoning,Which is the characteristic of the first wool craft with spoons?,"['A. It is decorated with yellow flowers out of wool threads.'
+ 'B. It has spoons in both outer and inner circles.'
+ 'C. It has five wool pendants.' 'D. All of the above.']",D,long,Life Record,Handicraft,LifeRecord_Egocentric,4
+y9Fne3oUwX4,840-1,Object Recognition,Which food did the team that chose bananas also select from the following options?,['A. Bread.' 'B. Doughnut.' 'C. Hamburg.' 'D. Marshmallow.'],D,long,Life Record,Food,LifeRecord_Egocentric,4
+K7YNoRZMv2k,844-1,Temporal Reasoning,"In what chronological order did the following events take place?
+(a) The Prada brand was almost ceasing to exist.
+(b) The launch of the label Miu Miu.
+(c) Prada gained connections to royal families.
+(d) The arrival of Miuccia Prada.","['A. (c)(b)(a)(d).' 'B. (c)(a)(d)(b).' 'C. (d)(c)(a)(b).'
+ 'D. (d)(a)(b)(c).']",B,long,Life Record,Fashion,LifeRecord_Egocentric,4
+vzfTpidE5wg,855-1,Action Recognition,What is the process of boiling leaves in a pot that the girl introduces at the beginning of the video?,"['A. Make lemonade to boost immunity.'
+ 'B. Making rosemary perfume, spraying it at the roots to care for the hair.'
+ 'C. Making shampoo, applying it to the roots while washing hair for hair care.'
+ 'D. Making rosemary water, spraying it on the body for moisturizing.']",B,long,Life Record,Daily Life,LifeRecord_Egocentric,4
+5i5Be73ESUc,858-1,Information Synopsis,Which of the following things was not discussed by the heroine while driving to work?,"['A. Preview of the main content of this video.'
+ 'B. Her occupation and place of work.' 'C. Her job search process.'
+ 'D. Some of her experiences at work.']",C,long,Life Record,Daily Life,LifeRecord_Egocentric,4
+eZ5lFBPpRkM,868-1,Object Reasoning,What is the relationship of the woman standing next to the main character in the video when he visits Jatilui?,"['A. His wife.' 'B. His daughter.' 'C. Strange passersby.'
+ 'D. Modeling for photo shoots.']",A,long,Life Record,Travel,LifeRecord_Egocentric,4

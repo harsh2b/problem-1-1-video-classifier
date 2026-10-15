@@ -1,7 +1,21 @@
-__pycache__/
-*.pyc
+# Virtual environments
 .venv/
 venv/
-.env
-node_modules/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Raw media binaries (>100MB exceeds GitHub push limits)
+data/videos/
+data/.cache/
+data/.mplconfig/
+
+# OS and IDE files
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
