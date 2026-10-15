@@ -7,7 +7,6 @@ setup_commands:
 
 run_commands:
   - "python src/main.py --benchmark"
-  - "python src/main.py --predict data/videos/A30IuIjQYYg.mp4"
 
 test_commands:
   - "pytest tests -v"
