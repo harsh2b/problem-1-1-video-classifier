@@ -1,4 +1,4 @@
-"""Gated attention classifier for video format prediction."""
+"""Gated attention classifier with residual temporal pooling for video format prediction."""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -9,7 +9,7 @@ from src.config import ModelConfig, CHUNKING_POLICIES, CLASS_NAMES, NUM_CLASSES
 
 class GatedTemporalAttention(nn.Module):
     """Gated attention pooling over temporal frame sequences (Ilse et al., ICML 2018)."""
-    def __init__(self, in_dim: int, hidden_dim: int = 128):
+    def __init__(self, in_dim: int, hidden_dim: int = 64):
         super().__init__()
         self.fc_tanh = nn.Linear(in_dim, hidden_dim)
         self.fc_sigm = nn.Linear(in_dim, hidden_dim)
@@ -28,29 +28,37 @@ class GatedTemporalAttention(nn.Module):
         return pooled, attention_weights.squeeze(-1)
 
 class VideoFormatClassifier(nn.Module):
-    """Classifier head with attention pooling and calibrated softmax."""
+    """
+    Residual Gated Attention Classifier combining attention pooling
+    with statistical kinetic-temporal skip connections.
+    """
     def __init__(self, config: Optional[ModelConfig] = None):
         super().__init__()
         self.config = config or ModelConfig()
-        in_dim = self.config.visual_dim + self.config.motion_dim
+        in_dim = self.config.visual_dim + self.config.motion_dim # 584
+        hidden_dim = self.config.hidden_dim # 128
 
-        # Temporal dimension reduction & projection
+        self.norm = nn.LayerNorm(in_dim)
         self.projection = nn.Sequential(
-            nn.Linear(in_dim, self.config.hidden_dim),
-            nn.LayerNorm(self.config.hidden_dim),
-            nn.ReLU(),
+            nn.Linear(in_dim, hidden_dim),
+            nn.LayerNorm(hidden_dim),
+            nn.GELU(),
             nn.Dropout(self.config.dropout)
         )
 
-        # Gated Temporal Attention
-        self.attention_pool = GatedTemporalAttention(self.config.hidden_dim, self.config.hidden_dim // 2)
+        # Gated Temporal Attention Pooling
+        self.attention_pool = GatedTemporalAttention(hidden_dim, hidden_dim // 2)
+
+        # Residual projection from temporal mean, max, and std statistics
+        self.res_proj = nn.Linear(in_dim * 3, hidden_dim)
 
         # Classification Head
         self.classifier = nn.Sequential(
-            nn.Linear(self.config.hidden_dim, self.config.hidden_dim // 2),
-            nn.ReLU(),
+            nn.Linear(hidden_dim * 2, hidden_dim),
+            nn.LayerNorm(hidden_dim),
+            nn.GELU(),
             nn.Dropout(self.config.dropout),
-            nn.Linear(self.config.hidden_dim // 2, NUM_CLASSES)
+            nn.Linear(hidden_dim, NUM_CLASSES)
         )
 
         # Temperature parameter for probability calibration
@@ -64,9 +72,20 @@ class VideoFormatClassifier(nn.Module):
             logits: [Batch, NUM_CLASSES]
             attention_weights: [Batch, SeqLen]
         """
-        projected = self.projection(x)
-        pooled, attn_weights = self.attention_pool(projected)
-        logits = self.classifier(pooled)
+        x_norm = self.norm(x)
+        h = self.projection(x_norm) # [B, T, hidden_dim]
+
+        # Gated attention pooling
+        pooled, attn_weights = self.attention_pool(h) # [B, hidden_dim], [B, T]
+
+        # Temporal statistics: mean, peak, and variance
+        mean_p = torch.mean(x_norm, dim=1)
+        max_p = torch.max(x_norm, dim=1)[0]
+        std_p = torch.std(x_norm, dim=1)
+        res = self.res_proj(torch.cat([mean_p, max_p, std_p], dim=-1))
+
+        combined = torch.cat([pooled, res], dim=-1)
+        logits = self.classifier(combined)
         return logits, attn_weights
 
     def predict(self, x: torch.Tensor) -> Dict[str, Any]:

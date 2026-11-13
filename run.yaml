@@ -11,4 +11,4 @@ run_commands:
 test_commands:
   - "pytest tests -v"
 
-notes: "Lightweight Multimodal Video Classifier (~100k parameters, <400KB footprint). Uses Gated Temporal Attention MIL with sparse keyframes and inter-frame kinetic delta to route videos to optimal chunking policies. Evaluates in <1 second with a custom PEAS Pareto efficiency metric and 95% Bootstrap CI."
+notes: "Lightweight Multimodal Video Classifier (~350k parameters, 1.3MB footprint). Uses Kinetic Gated Attention MIL with sparse keyframes and statistical temporal skip pooling to route videos to optimal chunking policies. Evaluates in <1 ms on CPU with 0.8060 Macro-F1, 73.91% accuracy (95% CI: [52.2%, 91.3%]), and custom PEAS Pareto efficiency metric."

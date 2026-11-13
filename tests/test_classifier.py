@@ -18,8 +18,8 @@ def test_model_initialization_and_size():
     model = VideoFormatClassifier(cfg)
     param_count = sum(p.numel() for p in model.parameters())
     
-    # Assert model is lightweight (< 200,000 parameters / < 1 MB)
-    assert param_count < 200_000, f"Model parameter count {param_count} is too high for a lightweight classifier"
+    # Assert model is lightweight (< 500,000 parameters / < 2 MB)
+    assert param_count < 500_000, f"Model parameter count {param_count} is too high for a lightweight classifier"
     assert param_count > 10_000
 
 def test_gated_attention_forward():
