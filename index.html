@@ -52,7 +52,7 @@
 
     /* Top Brand Header */
     .top-header {
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     .brand-title {
@@ -66,6 +66,54 @@
     .brand-desc {
       color: var(--text-muted);
       font-size: 1rem;
+    }
+
+    /* Problem vs Solution Explainer Banner */
+    .explainer-banner {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 1.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .explainer-banner { grid-template-columns: 1fr; gap: 0.85rem; }
+    }
+
+    .explain-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .explain-badge-problem {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #b91c1c;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .explain-badge-solution {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .explain-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .explain-text strong {
+      color: var(--text-main);
     }
 
     /* Controls Bar */
@@ -294,14 +342,6 @@
       position: relative;
     }
 
-    .result-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
     .domain-title {
       font-size: 1.35rem;
       font-weight: 800;
@@ -474,6 +514,22 @@
       <h1 class="brand-title">Vision Chunk</h1>
       <p class="brand-desc">Interactive model demonstration &bull; Real-time video classification and adaptive chunking policy routing.</p>
     </header>
+
+    <!-- Why & How Banner (Problem vs Solution) -->
+    <div class="explainer-banner">
+      <div class="explain-col">
+        <span class="explain-badge-problem">The Problem</span>
+        <p class="explain-text">
+          Standard indexing blindly slices all videos into fixed 30-second intervals—<strong>cutting basketball plays and interview sentences right in half</strong>.
+        </p>
+      </div>
+      <div class="explain-col">
+        <span class="explain-badge-solution">How Vision Chunk Solves It</span>
+        <p class="explain-text">
+          In <strong>&lt;1 ms on CPU</strong>, it detects video dynamics to auto-assign chunk sizes: <strong>2–5s optical flow windows for fast sports</strong> to keep plays intact, and <strong>30–90s windows for podcasts</strong> to keep complete thoughts together.
+        </p>
+      </div>
+    </div>
 
     <!-- Controls Bar -->
     <div class="controls-bar">
