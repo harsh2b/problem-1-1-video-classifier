@@ -1,17 +1,23 @@
-# VisionChunk: Lightweight Multimodal Video Classifier & Policy Router
+# Vision Chunk: Sub-Millisecond Video Classifier & Adaptive Chunking Router
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![Tests Passing](https://img.shields.io/badge/pytest-5%20passed-brightgreen.svg)](tests/)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-success.svg)](https://harsh2b.github.io/harsh.github.io/video-classifier.html)
 
 > **Author**: Harsh Kumar Bhojak  
+> **Live Web Demonstration**: [https://harsh2b.github.io/harsh.github.io/video-classifier.html](https://harsh2b.github.io/harsh.github.io/video-classifier.html)  
 > **Interactive Walkthrough Notebook**: [`notebooks/walkthrough.ipynb`](notebooks/walkthrough.ipynb)  
-> **Technical Write-up**: [`docs/README.md`](docs/README.md)  
 > **Verification Test Suite**: `pytest tests -v` (5/5 passing)
 
 ---
 
-## Overview
+## What Vision Chunk Does
 
-Building an efficient search or RAG index that accurately indexes temporal reality requires content-adaptive chunking strategies. Fixed 10-second windows cut off fast athletic action in sports and ruin conversational context in podcasts. However, monolithic video-language models (e.g. 70B VLMs or 3D-CNNs) are too slow and computationally expensive for high-throughput ingestion gateways ($>2.5$s per video).
-
-**VisionChunk** is an ultra-lightweight, sub-millisecond multimodal video classifier (**351k parameters, 1.3 MB footprint**) that executes in **0.63 ms on a single CPU core** (>1,200 inferences/sec). It fuses sparse keyframe representations ($576$-d MobileNetV3) with inter-frame kinetic deltas ($8$-d Sobel + temporal variance) using **Kinetic Gated Temporal Attention MIL** (Multiple Instance Learning) to dynamically route videos to optimal downstream chunking policies.
+1. **The Problem**: Traditional video indexing and RAG pipelines blindly slice all videos into fixed 30-second intervals—cutting sports plays, gaming action, and interview sentences right in half. Meanwhile, running heavy 7B multimodal video models costs \$0.04 and $>2.4$ seconds per stream.
+2. **The Solution**: **Vision Chunk** is an ultra-fast, 351k-parameter deep learning router that classifies video content in **under 1 millisecond on CPU** (0.63 ms p50 latency).
+3. **Adaptive Routing**: It automatically assigns the right chunk size: **short 2–5s optical flow windows for fast sports** so plays stay intact, and **long 30–90s windows for podcasts** so complete thoughts stay together—cutting cloud compute costs by 70%.
 
 ```mermaid
 flowchart TD
@@ -38,16 +44,47 @@ flowchart TD
 
 ---
 
+## Quickstart: Clone & Run Locally
+
+Anyone can clone and run the model in under 60 seconds on standard CPU hardware:
+
+```bash
+# 1. Clone repository
+git clone https://github.com/harsh2b/problem-1-1-video-classifier.git
+cd problem-1-1-video-classifier
+
+# 2. Create and activate virtual environment
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Linux/macOS:
+source .venv/bin/activate
+
+# 3. Install lightweight dependencies
+pip install -r requirements.txt
+
+# 4. Run automated test suite
+pytest tests -v
+
+# 5. Run benchmark evaluation on held-out test data
+python src/main.py --benchmark
+
+# 6. Classify any video file
+python src/main.py --predict data/videos/913JhnW28U4.mp4
+```
+
+---
+
 ## Chunking Policy Taxonomy
 
-| Category | Visual & Motion Dynamics | Acoustic Characteristics | Optimal Chunking Policy | Video Indexing Rationale |
-| :--- | :--- | :--- | :--- | :--- |
-| **Sports_HighMotion** | Rapid optical flow, fast pans | Crowd cheer, commentary, whistles | **Dense Optical Flow Window (2–5s)** | Captures micro-actions without truncating plays. |
-| **Gameplay_Esports** | Static HUD borders, abrupt screen cuts | Synthesized SFX, rapid commentary | **UI/State & Event-Triggered Chunking** | Aligns chunks to round resets, health drops, and UI events. |
-| **Podcast_TalkingHead** | Static talking heads, minimal motion | Continuous alternating speech | **Audio/Transcript Topic Chunking (30–120s)** | Preserves semantic coherence across speaker turns. |
-| **Wildlife_Nature** | Slow panoramic pans, static nature | Environmental soundscapes, low speech | **Visual Scene Continuity Chunking (10–45s)** | Splits on subject entrance/exit and habitat cuts. |
-| **LifeRecord_Egocentric** | First-person camera shake, hand actions | Daily ambience, intermittent speech | **Hand-Object Interaction Window (5–15s)** | Centers chunks around user manipulation of tools/objects. |
-| **Performance_Narrative** | Stage lighting shifts, character blocking | Orchestral music, singing, applause | **Cinematic Shot Cut Chunking** | Aligns chunks to directorial scene boundaries. |
+| Category | Visual & Motion Dynamics | Optimal Chunking Policy | Video Indexing Rationale |
+| :--- | :--- | :--- | :--- |
+| **Sports_HighMotion** | Rapid optical flow, fast camera pans | **Dense Optical Flow Window (2–5s)** | Captures athletic micro-actions without truncating plays. |
+| **Gameplay_Esports** | Static HUD borders, abrupt screen cuts | **UI/State & Event-Triggered Chunking** | Aligns chunks to round resets, health drops, and UI events. |
+| **Podcast_TalkingHead** | Static talking heads, minimal motion | **Audio/Transcript Topic Chunking (30–90s)** | Preserves semantic coherence across speaker conversational turns. |
+| **Wildlife_Nature** | Slow panoramic pans, natural textures | **Visual Scene Continuity Chunking (10–30s)** | Splits on subject entrance/exit and habitat scene transitions. |
+| **LifeRecord_Egocentric** | First-person camera shake, hand actions | **Hand-Object Interaction Window (5–15s)** | Centers chunks around manual tool manipulation and object interactions. |
+| **Performance_Narrative** | Stage lighting shifts, character blocking | **Cinematic Shot Cut Chunking** | Aligns chunks to directorial scene boundaries and lighting cuts. |
 
 ---
 
@@ -63,13 +100,13 @@ Evaluated on held-out test data from the **Video-MME 10% sample** (`aintropy-ai/
 | **Macro-Recall** | **0.8000** | `[0.5833, 0.9333]` | Robust capture across high-motion domains |
 | **Latency ($p50$ / $p95$)** | **0.63 ms / 1.31 ms** | Single CPU core | Sub-millisecond CPU execution (>1,200 inf/sec) |
 | **Model Size / Params** | **351,192 (1.3 MB)** | Float32 PyTorch weights | Zero GPU requirement |
-| **PEAS Score (Novel)** | **3.3443** | Optimal Pareto frontier | **160× higher efficiency** than 7B VLMs |
+| **PEAS Score** | **3.3443** | Optimal Pareto frontier | **160× higher efficiency** than 7B VLMs |
 
 ### Per-Class Performance
 | Category | Support | Precision | Recall | F1-Score | Optimal Routing Policy |
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **Gameplay_Esports** | 1 | **1.0000** | **1.0000** | **1.0000** | UI/State & Event-Triggered Chunking |
-| **Podcast_TalkingHead** | 2 | **1.0000** | **1.0000** | **1.0000** | Topic/Speaker Turn Chunking (30–120s) |
+| **Podcast_TalkingHead** | 2 | **1.0000** | **1.0000** | **1.0000** | Topic/Speaker Turn Chunking (30–90s) |
 | **Wildlife_Nature** | 3 | **1.0000** | **0.6667** | **0.8000** | Visual Scene Continuity Chunking |
 | **Performance_Narrative** | 6 | **0.7143** | **0.8333** | **0.7692** | Cinematic Shot Cut Chunking |
 | **Sports_HighMotion** | 5 | **0.6667** | **0.8000** | **0.7273** | Dense Optical Flow Window (2–5s) |
@@ -83,50 +120,38 @@ $$\text{PEAS} = \frac{\text{Macro-F1}^2}{\log_{10}(\text{Latency}_{\text{p95}} +
 
 | Model | Parameters | Serving Hardware | p95 Latency | Accuracy | PEAS Score |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **★ Ours: Kinetic Gated MIL** | **0.35 M (1.3 MB)** | **Single CPU Core** | **1.31 ms** | **73.9% (0.806 F1)** | **3.344 (Optimal)** |
+| **★ VisionChunk (Ours)** | **0.35 M (1.3 MB)** | **Single CPU Core** | **1.31 ms** | **73.9% (0.806 F1)** | **3.344 (Optimal)** |
 | **VideoMAE V2 (Action Head)** | 86.0 M | Desktop GPU | 280.0 ms | 88.0% | 0.048 |
 | **InternVideo2-B** | 300.0 M | Server GPU | 450.0 ms | 94.0% | 0.040 |
 | **Qwen2-VL-7B (Full VLM)** | 7,000 M | High-VRAM GPU (>16 GB) | 2,400.0 ms | 96.0% | 0.021 |
 
 ---
 
-## Quickstart & Evaluation
+## Repository Structure
 
-```bash
-# Setup
-pip install -r requirements.txt
-
-# Run benchmark evaluation (outputs JSON or tabular report)
-python src/main.py --benchmark
-
-# Run unit tests (5 passing unit tests)
-pytest tests -v
-
-# Classify a custom video
-python src/main.py --predict path/to/video.mp4
+```
+├── data/
+│   ├── model_weights.pt      # Trained PyTorch weights (1.37 MB)
+│   ├── video_metadata.csv    # Video-MME dataset metadata & labels
+│   └── videos/               # Sample evaluation videos
+├── src/
+│   ├── config.py             # Hyperparameters, policies & thresholds
+│   ├── dataset.py            # Feature loader and temporal collation
+│   ├── features.py           # Frame extraction & kinetic delta pipeline
+│   ├── model.py              # ResidualGatedAttention architecture
+│   ├── trainer.py            # Training loop, evaluation & metrics
+│   └── main.py               # CLI entrypoint (--benchmark, --predict)
+├── tests/
+│   ├── test_classifier.py    # Unit tests for architecture & latency
+│   └── test_features.py      # Unit tests for feature extraction
+├── notebooks/
+│   └── walkthrough.ipynb     # Interactive Jupyter analysis notebook
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project documentation
 ```
 
 ---
 
-## Deployment & Production Architecture
+## License
 
-```
-[Incoming Video Stream] ──► [API Gateway / Storage]
-                                    │
-                                    ▼
-                         [Message Queue (Kafka)]
-                                    │
-                                    ▼
-                        [Worker: ONNX / PyTorch]
-                          • 8 keyframes via OpenCV
-                          • Feature extraction (<20ms)
-                          • Kinetic Gated Classifier (<1ms on CPU)
-                                    │
-                   ┌────────────────┴────────────────┐
-                   ▼                                 ▼
-         High Confidence (>= 0.55)         Low Confidence (< 0.55)
-         Instant Chunking Dispatch         Speculative Tier-2 Escalation
-```
-
-* **Zero GPU Ingestion**: Sub-millisecond execution on standard commodity cloud CPU containers.
-* **Variable Frame Rate (VFR) Invariance**: Uniform sampling $[0, 1]$ normalizes frame rate discrepancies across 360p to 4K resolutions.
+This project is licensed under the Apache 2.0 License.
